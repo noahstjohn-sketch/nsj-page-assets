@@ -30,7 +30,8 @@ if(!c.__r17click){c.__r17click=1;c.addEventListener('click',function(e){if(e.tar
 })
 }
 function fixSummary(){
-var sumw=document.querySelector('.elOrderSummaryWrapper');
+var sums=[].slice.call(document.querySelectorAll('.elOrderSummaryWrapper')).filter(function(s){return s.offsetParent});
+var sumw=sums[0];
 if(!sumw)return;
 if(!sumw.__expanded){var tog=sumw.querySelector('.elOrderSummaryToggleable');if(tog){tog.click();sumw.__expanded=1}}
 var head=sumw.querySelector('.elOrderSummaryHeadText');if(head&&head.textContent==='Summary')head.textContent='Order summary';
