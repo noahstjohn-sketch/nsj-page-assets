@@ -35,6 +35,6 @@ if(!sumw)return;
 if(!sumw.__expanded){var tog=sumw.querySelector('.elOrderSummaryToggleable');if(tog){tog.click();sumw.__expanded=1}}
 var head=sumw.querySelector('.elOrderSummaryHeadText');if(head&&head.textContent==='Summary')head.textContent='Order summary';
 }
-v3fix();setTimeout(v3fix,1500);setTimeout(v3fix,4000);setTimeout(fixSummary,800);setTimeout(fixSummary,2500);try{var co3=document.querySelector('.elCheckout');if(co3)new MutationObserver(function(){clearTimeout(window.__r17v3);window.__r17v3=setTimeout(v3fix,50)}).observe(co3,{childList:true,subtree:true})}catch(e){}
+v3fix();setTimeout(v3fix,1500);setTimeout(v3fix,4000);var __fsN=0;var __fsT=setInterval(function(){fixSummary();if(++__fsN>30)clearInterval(__fsT)},1000);try{var co3=document.querySelector('.elCheckout');if(co3)new MutationObserver(function(){clearTimeout(window.__r17v3);window.__r17v3=setTimeout(function(){v3fix();fixSummary()},50)}).observe(co3,{childList:true,subtree:true})}catch(e){}
 })();
 </script>
