@@ -35,6 +35,13 @@ var sumw=sums[0];
 if(!sumw)return;
 if(!sumw.__expanded){var tog=sumw.querySelector('.elOrderSummaryToggleable');if(tog){tog.click();sumw.__expanded=1}}
 var head=sumw.querySelector('.elOrderSummaryHeadText');if(head&&head.textContent==='Summary')head.textContent='Order summary';
+sumw.querySelectorAll('.elOrderSummaryRow').forEach(function(r){
+if(r.__mmclean)return;
+var left=r.querySelector('.elOrderSummaryRowLeft');if(!left)return;
+var t=left.textContent||'';
+if(t.indexOf('Add The Money Story Rewrite Kit')>-1){left.textContent='The Money Story Rewrite Kit';r.__mmclean=1}
+else if(t.indexOf('Add The Money Magnet Audio Vault')>-1){left.textContent='The Money Magnet Audio Vault';r.__mmclean=1}
+});
 }
 v3fix();setTimeout(v3fix,1500);setTimeout(v3fix,4000);var __fsN=0;var __fsT=setInterval(function(){fixSummary();if(++__fsN>30)clearInterval(__fsT)},1000);try{var co3=document.querySelector('.elCheckout');if(co3)new MutationObserver(function(){clearTimeout(window.__r17v3);window.__r17v3=setTimeout(function(){v3fix();fixSummary()},50)}).observe(co3,{childList:true,subtree:true})}catch(e){}
 })();
