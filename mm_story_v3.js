@@ -7,7 +7,7 @@ var swap=function(node){
 try{
 var t=node.textContent||'';
 if(node.tagName==='SCRIPT'&&/application\/json/.test(node.type)&&t.indexOf('"selectType": "single"')>-1&&(t.indexOf('"1051247"')>-1||t.indexOf('"1051244"')>-1)){
-node.textContent=t.replace(/"selectType": "single"/g,'"selectType": "multi"');
+node.textContent=t.replace(/"selectType": "single"/g,'"selectType": "multiple"');
 }
 }catch(e){}
 };
