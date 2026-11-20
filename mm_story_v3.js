@@ -1,6 +1,23 @@
 <style>/* mm story: let the orange h1 phrase wrap on phones */@media(max-width:900px){#r17 h1 .o{white-space:normal}}</style>
 <script>/* mm story v3: his 11-19 order - /rapid top + testimonial section on mm (beats left, written cards right); replaces mm copy v2 */
 (function(){
+/* multi-select bumps: CF ships the bump configs as selectType single; swap to multi before the checkout app boots */
+(function(){
+var swap=function(node){
+try{
+var t=node.textContent||'';
+if(node.tagName==='SCRIPT'&&/application\/json/.test(node.type)&&t.indexOf('"selectType": "single"')>-1&&(t.indexOf('"1051247"')>-1||t.indexOf('"1051244"')>-1)){
+node.textContent=t.replace(/"selectType": "single"/g,'"selectType": "multi"');
+}
+}catch(e){}
+};
+var mo=new MutationObserver(function(muts){
+for(var i=0;i<muts.length;i++){var an=muts[i].addedNodes;for(var j=0;j<an.length;j++){swap(an[j]);if(an[j].childNodes&&an[j].childNodes.length)an[j].childNodes.forEach && an[j].childNodes.forEach(swap);}}
+});
+function start(){mo.observe(document.documentElement,{childList:true,subtree:true})}
+if(document.documentElement)start();else document.addEventListener('DOMContentLoaded',start);
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('script[type="application/json"]').forEach(swap)});
+})();
 var CASE=`<div class="case id-6Z-Mebmrw-8108"><h2 class="id-6Z-Mebmrw-8109">My Client George Went From 80-Hour Work Weeks To <span class="o id-6Z-Mebmrw-8111">6 Figures Per Month</span></h2><div class="vcard id-6Z-Mebmrw-8113" data-v="28e1dc34-eb57-400b-87a2-92234fba2f2b"><img src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/card_george.webp" alt="Client video" class="id-6Z-Mebmrw-8114"/></div><p class="tag id-6Z-Mebmrw-8115">Here's George, in his own words. Tap to play.</p><h2 class="id-6Z-Mebmrw-8117">Or Scott Z.: <span class="o id-6Z-Mebmrw-8119">&#8220;I Can Now Work 12 Hours A Week</span> And Make More Money Than I Made Last Year Working 70+ Hour Weeks.&#8221;</h2><img class="winimg id-6Z-Mebmrw-8122" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/win_scott.webp" alt="Scott Z.: I can now work 12 hours a week and make more money than I made last year working 70+ hour weeks."/><h2 class="id-6Z-Mebmrw-8123">Or Norm L., A CEO: &#8220;My Company Went From $125,000 In Sales To <span class="o id-6Z-Mebmrw-8125">Over $1.3 Million In Sales In Just 15 Months.&#8221;</span></h2><img class="winimg id-6Z-Mebmrw-8127" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/win_norm.webp" alt="Norm L.: My company went from $125,000 in sales to over $1.3 million in sales in just 15 months."/><h2 class="id-6Z-Mebmrw-8159">Or Brandon H., A Financial Planner: <span class="o id-6Z-Mebmrw-8161">&#8220;My Sales Tripled In One Month.&#8221;</span></h2><img class="winimg id-6Z-Mebmrw-8163" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/win_brandon.webp" alt="Brandon H.: my sales tripled in one month"/><h2 class="id-6Z-Mebmrw-8164">Or John P. Cito, In His Own Words: <span class="o id-6Z-Mebmrw-8166">&#8220;Finally Found The Real Deal.&#8221;</span></h2><img class="winimg id-6Z-Mebmrw-8168" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/post_cito.webp" alt="John P. Cito recommends Dr. Noah St. John"/></div>`;
 var OCW=`<div class="ocw id-6Z-Mebmrw-8051"><img class="winimg id-6Z-Mebmrw-8052" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_scott.webp" alt="Scott Z.: I can now work 12 hours a week and make more money than I made last year working 70+ hour weeks."/><img class="winimg id-6Z-Mebmrw-8053" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_norm.webp" alt="Norm L.: My company went from $125,000 in sales to over $1.3 million in sales in just 15 months."/><img class="winimg id-6Z-Mebmrw-8054" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_frank.webp" alt="Frank S.: double our sales and break the million-dollar mark"/><img class="winimg id-6Z-Mebmrw-8055" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_brandon.webp" alt="Brandon H.: my sales tripled in one month"/><img class="winimg id-6Z-Mebmrw-8056" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_janie.webp" alt="Janie A.: an additional $29,000 in one week"/><img class="winimg id-6Z-Mebmrw-8057" src="https://cdn.jsdelivr.net/gh/noahstjohn-sketch/nsj-page-assets@2b245c0/reset17/winc_brian.webp" alt="Brian L.: I have broken company sales records"/></div>`;
 function mmStory(){
