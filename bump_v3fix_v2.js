@@ -42,7 +42,7 @@ var nodes=[];var n;
 while(n=w.nextNode()){nodes.push(n)}
 nodes.forEach(function(tx){
 var v=tx.nodeValue||'';
-var nv=v.replace(/\s*The Day 5 reminder email always arrives before the \$27 starts\.\s*/g,' ').replace(/\s*unless you cancel/g,'');
+var nv=v.replace(/\s*The Day 5 reminder email always arrives before the \$27 starts\.\s*/g,' ').replace(/\s*unless you cancel/g,'').replace(/\s*Day 5, the app emails you a heads-up about the \$27, with the cancel link inside\.\s*/g,' ').replace(/\s*Day 5 reminder email with the cancel link inside, before the \$27 ever starts\.\s*/g,' ');
 if(nv!==v){tx.nodeValue=nv}
 });
 }
