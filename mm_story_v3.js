@@ -1,4 +1,4 @@
-<style>/* mm story: let the orange h1 phrase wrap on phones */@media(max-width:900px){#r17 h1 .o{white-space:normal}}</style>
+<style>/* mm story: let the orange h1 phrase wrap on phones; order summary under the bumps */@media(max-width:900px){#r17 h1 .o{white-space:normal}}@media all{.elCheckout .elMultiStepBody[data-step-number="2"]>.elOrderSummaryWrapper{order:0!important}}</style>
 <script>/* mm story v3: his 11-19 order - /rapid top + testimonial section on mm (beats left, written cards right); replaces mm copy v2 */
 (function(){
 /* multi-select bumps: CF ships the bump configs as selectType single; swap to multi before the checkout app boots */
