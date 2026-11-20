@@ -29,6 +29,23 @@ c.__v3done=1;
 if(!c.__r17click){c.__r17click=1;c.addEventListener('click',function(e){if(e.target.closest('label,input'))return;var x=c.querySelector('input[type=checkbox]');if(x)x.click()})}
 })
 }
+function sanitize(){
+var scope=document.getElementById('r17');if(!scope)return;
+scope.querySelectorAll('div,p,span,li').forEach(function(el){
+if(el.__mmskip)return;
+var t=el.textContent||'';
+if(el.children.length===0&&t.indexOf('On Day 5 the app emails you a heads-up')>-1){el.remove();return}
+if(el.children.length<=1&&t.indexOf('$1 today for 7 days. Then $27 a month unless you cancel. Cancel anytime in one click, right in the app. On Day 5')>-1){el.remove();return}
+});
+var w=document.createTreeWalker(scope,NodeFilter.SHOW_TEXT,null);
+var nodes=[];var n;
+while(n=w.nextNode()){nodes.push(n)}
+nodes.forEach(function(tx){
+var v=tx.nodeValue||'';
+var nv=v.replace(/\s*The Day 5 reminder email always arrives before the \$27 starts\.\s*/g,' ').replace(/\s*unless you cancel/g,'');
+if(nv!==v){tx.nodeValue=nv}
+});
+}
 function fixSummary(){
 var sums=[].slice.call(document.querySelectorAll('.elOrderSummaryWrapper')).filter(function(s){return s.offsetParent});
 var sumw=sums[0];
@@ -39,10 +56,10 @@ sumw.querySelectorAll('.elOrderSummaryRow').forEach(function(r){
 if(r.__mmclean)return;
 var left=r.querySelector('.elOrderSummaryRowLeft');if(!left)return;
 var t=left.textContent||'';
-if(t.indexOf('Add The Money Story Rewrite Kit')>-1){left.textContent='The Money Story Rewrite Kit';r.__mmclean=1}
-else if(t.indexOf('Add The Money Magnet Audio Vault')>-1){left.textContent='The Money Magnet Audio Vault';r.__mmclean=1}
+if(t.indexOf('Add The Money Story Rewrite Kit')>-1){left.textContent='Money Story Rewrite Kit';r.__mmclean=1}
+else if(t.indexOf('Add The Money Magnet Audio Vault')>-1){left.textContent='Money Magnet Audio Vault';r.__mmclean=1}
 });
 }
-v3fix();setTimeout(v3fix,1500);setTimeout(v3fix,4000);var __fsN=0;var __fsT=setInterval(function(){fixSummary();if(++__fsN>30)clearInterval(__fsT)},1000);try{var co3=document.querySelector('.elCheckout');if(co3)new MutationObserver(function(){clearTimeout(window.__r17v3);window.__r17v3=setTimeout(function(){v3fix();fixSummary()},50)}).observe(co3,{childList:true,subtree:true})}catch(e){}
+v3fix();setTimeout(v3fix,1500);setTimeout(v3fix,4000);var __fsN=0;var __fsT=setInterval(function(){fixSummary();sanitize();if(++__fsN>30)clearInterval(__fsT)},1000);try{var co3=document.querySelector('.elCheckout');if(co3)new MutationObserver(function(){clearTimeout(window.__r17v3);window.__r17v3=setTimeout(function(){v3fix();fixSummary();sanitize()},50)}).observe(co3,{childList:true,subtree:true})}catch(e){}
 })();
 </script>
